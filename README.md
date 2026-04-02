@@ -1,104 +1,81 @@
 # Crypto & Gold Smart Manager
 
-## نظرة عامة
+## 📌 Overview
 
-تطبيق **Crypto & Gold Smart Manager** هو نظام متكامل لإدارة استثمارات العملات الرقمية والذهب. يتيح للمستخدمين تتبع مشترياتهم اليومية من الذهب والعملات الرقمية، وعرض لوحة تحكم بأسعار السوق الحية (مدمجة من Binance API)، وتحديث سجلاتهم، وحذف المعاملات القديمة. تم بناء التطبيق باستخدام FastAPI للواجهة الخلفية (Backend) وHTML/CSS/JS للواجهة الأمامية (Frontend)، مع استخدام SQLite لتخزين بيانات المستخدمين والمعاملات.
+The **Crypto & Gold Smart Manager** is a premium, full-stack financial management application designed for modern investors who demand a secure and intuitive platform to track their digital and precious metal assets. This "Masterpiece" project integrates a high-performance **FastAPI** backend with a sleek, responsive frontend, providing real-time market insights and comprehensive portfolio management capabilities. It stands as a testament to secure coding practices, robust architecture, and user-centric design.
 
-## الميزات الأساسية
+## ⚙️ Features
 
-*   **نظام مصادقة آمن**: تسجيل دخول وتسجيل مستخدمين جديدين باستخدام JSON Web Tokens (JWT) لضمان أمان الجلسات.
-*   **إدارة المعاملات (CRUD)**:
-    *   **إنشاء (Create)**: إضافة مشتريات جديدة من الذهب والعملات الرقمية.
-    *   **قراءة (Read)**: عرض جميع المعاملات في لوحة تحكم سهلة الاستخدام.
-    *   **تحديث (Update)**: تعديل كميات الأصول أو الملاحظات الخاصة بالمعاملات.
-    *   **حذف (Delete)**: إزالة المعاملات القديمة أو غير المرغوب فيها.
-*   **أسعار حية**: دمج مع Binance API لعرض أسعار العملات الرقمية (BTC, ETH) والذهب (PAXG) في الوقت الفعلي.
-*   **واجهة برمجة تطبيقات (API) RESTful**: تصميم API نظيف ومنظم لجميع عمليات CRUD.
-*   **واجهة مستخدم بسيطة وجذابة**: واجهة أمامية مبنية باستخدام HTML, CSS, وJavaScript توفر تجربة مستخدم سلسة.
+*   **Secure Authentication & Authorization**: Implements a rigorous security model using JSON Web Tokens (JWT) for session management and encrypted credential storage, ensuring user data remains private and protected.
+*   **Real-time Market Intelligence**: Seamlessly integrates with the **Binance API** to provide live price feeds for cryptocurrencies (BTC, ETH) and gold (PAXG), enabling informed investment decisions.
+*   **Comprehensive Portfolio Management (CRUD)**:
+    *   **Create**: Effortlessly log daily gold and crypto purchases with detailed metadata.
+    *   **Read**: Access a dynamic, real-time dashboard showcasing asset performance and current market values.
+    *   **Update**: Refine transaction details, update balances, or append strategic notes to existing records.
+    *   **Delete**: Maintain a clean and relevant portfolio by removing historical or redundant transaction data.
+*   **RESTful API Architecture**: Features a meticulously designed API structure that adheres to industry standards, promoting scalability and ease of integration.
+*   **Responsive & Elegant UI**: A custom-built frontend utilizing modern HTML5, CSS3, and JavaScript (ES6+), optimized for both desktop and mobile viewing.
 
-## البنية المعمارية
+## 🛠 Tech Stack
 
-يتكون المشروع من جزأين رئيسيين:
+*   **Backend Framework**: FastAPI (Python 3.11+)
+*   **Database**: SQLite (with SQLAlchemy ORM)
+*   **Security**: JWT (JSON Web Tokens), Passlib (with bcrypt)
+*   **API Integration**: Binance API (via `requests`)
+*   **Frontend**: HTML5, CSS3 (with custom variables), Vanilla JavaScript (ES6+)
+*   **Environment Management**: `pip`, `venv`
+*   **Deployment**: Docker-ready (via `Dockerfile` and `docker-compose.yml`)
 
-1.  **الواجهة الخلفية (Backend)**: مبنية باستخدام [FastAPI](https://fastapi.tiangolo.com/)، وهي إطار عمل ويب حديث وعالي الأداء لـ Python. تستخدم SQLAlchemy للتعامل مع قاعدة بيانات SQLite، وتوفر نقاط نهاية (endpoints) RESTful لجميع عمليات التطبيق. يتم تأمين المصادقة باستخدام JWT.
+## 📸 Project Showcases
 
-    *   `main.py`: نقطة الدخول الرئيسية لتطبيق FastAPI، تحتوي على تعريفات المسارات (routes) ومنطق الأعمال.
-    *   `models.py`: تعريف نماذج قاعدة البيانات (SQLAlchemy models) للمستخدمين والمعاملات.
-    *   `schemas.py`: تعريف مخططات البيانات (Pydantic schemas) للتحقق من صحة البيانات وتحديد هياكل الإدخال والإخراج للـ API.
-    *   `auth.py`: يحتوي على وظائف المصادقة، بما في ذلك تجزئة كلمات المرور (password hashing) وإنشاء والتحقق من JWT.
-    *   `database.py`: إعداد اتصال قاعدة البيانات SQLite ووظائف الجلسة.
+### 🖥️ Dynamic Dashboard
+![Dashboard Mockup](screenshots/dashboard_mockup.png)
+*A high-fidelity mockup showcasing the live prices, portfolio overview, and transaction management interface.*
 
-2.  **الواجهة الأمامية (Frontend)**: مبنية باستخدام HTML, CSS, وJavaScript. تتفاعل مع الواجهة الخلفية عبر طلبات HTTP لجلب البيانات وعرضها، وتوفير واجهة مستخدم تفاعلية.
+### 🔐 Secure Access
+![Login Mockup](screenshots/login_mockup.png)
+*The elegant and secure login portal, designed with a focus on user trust and professional aesthetics.*
 
-    *   `index.html`: الملف الرئيسي للواجهة الأمامية، يحتوي على هيكل الصفحة.
-    *   `static/style.css`: ملف التنسيقات (CSS) لتصميم الواجهة.
-    *   `static/app.js`: ملف JavaScript الذي يتعامل مع منطق الواجهة الأمامية، بما في ذلك التفاعل مع الـ API وعرض البيانات.
+## ▶️ How to Run (for Termux/Linux Users)
 
-## كيفية التشغيل
+Experience the application locally by following these streamlined setup instructions:
 
-للتشغيل المحلي للمشروع، اتبع الخطوات التالية:
+### Prerequisites
 
-### المتطلبات الأساسية
+*   **Python 3.11+** and `pip` installed.
+*   For Termux: `pkg install python`
 
-*   Python 3.8+
-*   pip (مدير حزم Python)
+### Installation & Execution
 
-### إعداد الواجهة الخلفية (Backend)
-
-1.  **استنساخ المستودع**:
+1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/YOUR_USERNAME/Crypto-Gold-Smart-Manager.git
-    cd Crypto-Gold-Smart-Manager/backend
+    git clone https://github.com/salah619/Crypto-Gold-Smart-Manager.git
+    cd Crypto-Gold-Smart-Manager
     ```
 
-2.  **إنشاء بيئة افتراضية وتفعيلها**:
+2.  **Backend Setup**:
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # لنظامي Linux/macOS
-    # venv\Scripts\activate   # لنظام Windows
-    ```
-
-3.  **تثبيت التبعيات**:
-    ```bash
+    cd backend
+    python3 -m venv venv
+    source venv/bin/activate
     pip install -r requirements.txt
-    ```
-
-4.  **تشغيل تطبيق FastAPI**:
-    ```bash
     uvicorn app.main:app --reload
     ```
-    سيتم تشغيل الواجهة الخلفية على `http://127.0.0.1:8000`.
+    *The API will be operational at `http://localhost:8000`.*
 
-### إعداد الواجهة الأمامية (Frontend)
+3.  **Frontend Access**:
+    Navigate to the `frontend` directory and open `index.html` in your preferred web browser. For a seamless experience, use a local server extension like VS Code's "Live Server".
 
-1.  **الانتقال إلى مجلد الواجهة الأمامية**:
-    ```bash
-    cd ../frontend
-    ```
+## 🚀 Future Roadmap
 
-2.  **فتح `index.html`**: يمكنك فتح ملف `index.html` مباشرة في متصفح الويب الخاص بك. تأكد من أن الواجهة الخلفية تعمل لتتمكن الواجهة الأمامية من الاتصال بها.
+*   **Advanced Analytics**: Implementation of interactive charts (Chart.js/D3.js) for historical performance tracking.
+*   **Multi-Currency Support**: Expanding beyond USD to support global fiat currencies.
+*   **Automated Alerts**: Real-time push notifications for price threshold breaches.
+*   **Mobile Application**: Development of a native mobile experience using React Native.
 
-    *ملاحظة*: قد تحتاج إلى استخدام إضافة لمتصفحك مثل 
-    `Live Server` في VS Code لتشغيل الواجهة الأمامية بشكل صحيح إذا واجهت مشاكل في تحميل الموارد.
+## 📄 License
 
-## خارطة الطريق المستقبلية (Future Roadmap)
-
-*   **دعم عملات وأصول إضافية**: توسيع قائمة العملات الرقمية والذهب المدعومة من خلال دمج المزيد من واجهات برمجة التطبيقات (APIs).
-*   **تحليلات ورسوم بيانية**: إضافة رسوم بيانية تفاعلية لعرض أداء المحفظة بمرور الوقت.
-*   **إشعارات مخصصة**: إشعارات للمستخدمين عند وصول أسعار الأصول إلى مستويات محددة.
-*   **تكامل المحافظ**: القدرة على ربط المحافظ الرقمية لجلب المعاملات تلقائيًا.
-*   **دعم لغات متعددة**: توفير واجهة مستخدم متعددة اللغات.
-*   **تحسينات الأمان**: تطبيق ميزات أمان إضافية مثل المصادقة الثنائية (2FA).
-*   **اختبارات الوحدة والتكامل**: كتابة اختبارات شاملة للواجهتين الخلفية والأمامية لضمان الاستقرار والموثوقية.
-
-## المساهمة
-
-نرحب بالمساهمات في هذا المشروع! يرجى قراءة `CONTRIBUTING.md` (سيتم إضافته لاحقًا) للحصول على إرشادات حول كيفية المساهمة.
-
-## الترخيص
-
-هذا المشروع مرخص بموجب ترخيص MIT. انظر ملف `LICENSE` (سيتم إضافته لاحقًا) للحصول على التفاصيل.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
-
-**تم تطويره بواسطة Manus AI**
+**Developed with precision by Manus AI for Salah Al-Wafi**
