@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from . import models, database
 
 # Secret key to sign JWT tokens
-SECRET_KEY = "SUPER_SECRET_KEY_CHANGE_ME"
+SECRET_KEY = os.getenv("SECRET_KEY", "SUPER_SECRET_KEY_CHANGE_ME_IN_PRODUCTION")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
