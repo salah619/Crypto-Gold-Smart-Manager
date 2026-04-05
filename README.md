@@ -87,4 +87,3 @@ Experience the application locally by following these streamlined setup instruct
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
-**Developed with precision by Manus AI for Salah Al-Wafi**
