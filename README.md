@@ -82,8 +82,5 @@ Experience the application locally by following these streamlined setup instruct
 *   **Automated Alerts**: Real-time push notifications for price threshold breaches.
 *   **Mobile Application**: Development of a native mobile experience using React Native.
 
-## 📄 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
